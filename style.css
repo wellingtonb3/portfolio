@@ -1,0 +1,362 @@
+/* --- General & Body --- */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5; /* Light background for the overall page, contrasting with dark container */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top */
+    min-height: 100vh;
+    padding: 30px 0;
+}
+
+.portfolio-container {
+    display: flex;
+    background-color: #1e1e1e; /* Dark background for the main portfolio */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    width: 90%;
+    max-width: 1200px;
+    min-height: 800px; /* Ensure enough height for content */
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    width: 300px;
+    background-color: #2a2a2a; /* Slightly lighter dark for sidebar */
+    padding: 30px;
+    color: #e0e0e0;
+    text-align: center;
+    border-right: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #6c5ce7; /* Accent border color */
+    margin-bottom: 20px;
+}
+
+.sidebar h3 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #f0f0f0;
+}
+
+.sidebar p {
+    font-size: 0.9em;
+    color: #bbbbbb;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+.contact-info {
+    width: 100%;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #333333; /* Darker background for info items */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.info-item .icon {
+    font-size: 1.2em;
+    color: #6c5ce7; /* Accent icon color */
+    margin-right: 15px;
+    width: 25px; /* Fixed width for icons */
+    text-align: center;
+}
+
+.info-item span {
+    display: block;
+    font-size: 0.75em;
+    color: #888888;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.info-item p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #f0f0f0;
+}
+
+/* --- Content Area --- */
+.content-area {
+    flex-grow: 1;
+    padding: 40px;
+    color: #e0e0e0;
+    overflow-y: auto; /* Enable scrolling for content if it overflows */
+}
+
+.main-nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+}
+
+.main-nav a {
+    color: #bbbbbb;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+    font-size: 1.05em;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: #6c5ce7; /* Accent color for active/hover */
+}
+
+.main-nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #6c5ce7;
+}
+
+/* --- Section Styling --- */
+.page-section {
+    margin-bottom: 60px;
+}
+
+h2 {
+    font-size: 2.5em;
+    color: #f0f0f0;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #6c5ce7; /* Accent line under headings */
+    border-radius: 2px;
+}
+
+h3 {
+    font-size: 1.8em;
+    color: #f0f0f0;
+    margin-top: 40px;
+    margin-bottom: 25px;
+}
+
+.content-area p {
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: #d0d0d0;
+    margin-bottom: 20px;
+}
+
+/* --- Services Grid (What I'm Doing) --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.service-card {
+    background-color: #2a2a2a; /* Card background */
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.service-card img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.service-icon { /* For Font Awesome icons */
+    font-size: 3em;
+    color: #6c5ce7;
+    margin-bottom: 15px;
+}
+
+.service-card h4 {
+    color: #f0f0f0;
+    font-size: 1.25em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    color: #c0c0c0;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+/* --- Project Cards --- */
+.project-card-item {
+    background-color: #2a2a2a; /* Card background */
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.project-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.project-card-item h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #6c5ce7; /* Accent for project title */
+}
+
+.project-tools {
+    font-size: 0.85em;
+    color: #888888;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.project-card-item p {
+    color: #d0d0d0;
+    margin-bottom: 25px;
+}
+
+.project-links .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    font-size: 0.95em;
+}
+
+.btn {
+    background-color: #6c5ce7; /* Primary button color */
+    color: white;
+    border: 2px solid #6c5ce7;
+}
+
+.btn:hover {
+    background-color: #5544d9; /* Darker accent on hover */
+    border-color: #5544d9;
+}
+
+.btn.secondary {
+    background-color: transparent;
+    color: #6c5ce7;
+    border: 2px solid #6c5ce7;
+}
+
+.btn.secondary:hover {
+    background-color: #6c5ce7;
+    color: white;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .portfolio-container {
+        flex-direction: column;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        min-height: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #333;
+        padding: 20px;
+        order: -1; /* Puts sidebar at the top on small screens */
+    }
+
+    .main-nav {
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .content-area {
+        padding: 20px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-nav a {
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+
+    .sidebar h3 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .service-card h4 {
+        font-size: 1.1em;
+    }
+
+    .project-card-item h3 {
+        font-size: 1.3em;
+    }
+
+    .project-links .btn {
+        display: block;
+        margin: 10px 0;
+        width: 100%;
+    }
+}
