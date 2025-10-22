@@ -4,138 +4,489 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wellington Carlos - Data Enthusiast Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* BASE STYLES & RESET */
+        :root {
+            --dark-bg: #1A1A2E;
+            --light-text: #EAEAEA;
+            --accent-color: #FF5733; /* A bright, energetic orange/red for accent */
+            --card-bg: #2C3A47;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #FFA500; /* Lighter accent on hover */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            background-color: rgba(26, 26, 46, 0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--card-bg);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--light-text);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--accent-color);
+            border-bottom: 3px solid var(--card-bg);
+            display: inline-block;
+            padding-bottom: 10px;
+            width: 100%;
+        }
+        
+        /* HERO SECTION */
+        #home {
+            padding: 100px 0;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #111827 100%);
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text {
+            flex: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+
+        .hero-text p {
+            font-size: 1.5em;
+            color: var(--light-text);
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 50%;
+            border: 5px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(255, 87, 51, 0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #FFA500;
+        }
+
+        /* ABOUT SECTION */
+        #about .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .about-text {
+            font-size: 1.1em;
+            text-align: justify;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--accent-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-card .icon {
+            font-size: 3em;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .service-card h4 {
+            font-size: 1.3em;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        /* PORTFOLIO SECTION */
+        /* Adjusted grid for better layout with 5 projects, accommodating the space */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly smaller min size for more items */
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+        }
+
+        .project-card-image {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #111827;
+        }
+
+        .project-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Use cover to make images fill the container */
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover .project-card-image img {
+            opacity: 0.8;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            font-size: 1.5em;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .project-tags {
+            font-size: 0.9em;
+            color: #AAAAAA;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .project-links a {
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        /* CONTACT SECTION */
+        #contact {
+            text-align: center;
+        }
+
+        #contact .social-links a {
+            font-size: 1.8em;
+            margin: 0 15px;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #111827;
+            text-align: center;
+            padding: 30px 0;
+            border-top: 2px solid var(--card-bg);
+            margin-top: 50px;
+        }
+
+        .social-links {
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            font-size: 1.1em;
+            margin: 0 15px;
+        }
+
+        /* MEDIA QUERIES for Responsiveness */
+        @media (max-width: 900px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-image img {
+                max-width: 250px;
+                margin-bottom: 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-text p {
+                font-size: 1.2em;
+            }
+
+            nav ul {
+                display: none; /* Hide for mobile to keep clean, usually replaced by a burger menu */
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            h2 {
+                margin-bottom: 40px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="portfolio-container">
-        <aside class="sidebar">
-            <div class="profile-section">
-                <img src="images/profile-pic.png" alt="Wellington Carlos" class="profile-pic">
-                <h3>Wellington Carlos</h3>
-                <p>Data Enthusiast</p>
-            </div>
-            <div class="contact-info">
-                
-                <div class="info-item">
-                    <i class="fab fa-linkedin icon"></i> 
-                    <div>
-                        <span>LINKEDIN</span>
-                        <p><a href="https://www.linkedin.com/in/wellington-datascientist/" target="_blank">wellington-datascientist</a></p>
-                    </div>
-                </div>
-                
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt icon"></i>
-                    <div>
-                        <span>LOCATION</span>
-                        <p>Brazil</p>
-                    </div>
-                </div>
-                
-                </div>
-        </aside>
 
-        <main class="content-area">
-            <nav class="main-nav">
-                <a href="#about" class="active">About</a>
-                <a href="#projects">Portfolio</a>
-                <a href="https://github.com/wellingtonb3" target="_blank">GitHub</a>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Wellington Carlos</div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://github.com/wellingtonb3" target="_blank">GitHub</a></li>
+                </ul>
             </nav>
+        </div>
+    </header>
 
-            <section id="about" class="page-section active-section">
-                <h2>About Me</h2>
-                <p>
-                    Greetings! I'm a dedicated **Data Enthusiast** with a strong foundation in transforming raw data into clear, actionable intelligence. My expertise lies in statistical analysis, predictive modeling (Linear Regression), and crafting compelling data visualizations. I leverage Python (Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn) to uncover insights and drive data-driven decision-making. I am passionate about solving complex problems and communicating findings effectively.
-                </p>
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm Wellington Carlos</h1>
+                    <p class="role">Data Enthusiast | Statistical Analysis & Predictive Modeling</p>
+                    <p>I transform raw data into clear, actionable intelligence using Python and statistical rigor to drive data-driven decision-making.</p>
+                    <a href="#portfolio" class="cta-button">View My Projects</a>
+                </div>
+                <div class="hero-image">
+                    <img src="images/profile-pic.png" alt="Wellington Carlos Profile Picture">
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <h3>What I'm Doing</h3>
+    <section id="about">
+        <div class="container">
+            <h2>About Me & Services</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Greetings! I'm a dedicated **Data Enthusiast** with a strong foundation in transforming raw data into clear, actionable intelligence. My expertise lies in statistical analysis, predictive modeling, and developing compelling visualizations that bridge the gap between complex datasets and practical business strategy.</p>
+                    <p>I am proficient in leveraging tools like **Python (Pandas, Scikit-learn, Matplotlib)**, **SQL**, and **Power BI/Tableau** to deliver data-driven solutions. My mission is to use data to solve real-world problems and optimize decision-making processes.</p>
+                </div>
+
+                <h3>My Key Areas of Expertise</h3>
                 <div class="services-grid">
                     <div class="service-card">
-                        <img src="images/trading_icon.png" alt="Financial Analysis Icon">
-                        <h4>Financial Data Analysis</h4>
-                        <p>In-depth analysis of market data, time series, and quantitative metrics to identify trends and assess risk.</p>
+                        <div class="icon">&#x1F4CA;</div> <h4>Data Analysis & Insights</h4>
+                        <p>Cleaning, processing, and exploring complex datasets to extract key statistical insights and trends.</p>
                     </div>
                     <div class="service-card">
-                        <img src="images/viz_icon.png" alt="Data Visualization Icon">
-                        <h4>Data Visualization</h4>
-                        <p>Creating interactive and insightful dashboards and charts using Python libraries to tell data stories.</p>
+                        <div class="icon">&#x1F52C;</div> <h4>Predictive Modeling</h4>
+                        <p>Building and validating Machine Learning models (Regression, Classification) for forecasting and prediction.</p>
                     </div>
                     <div class="service-card">
-                        <img src="images/ml_icon.png" alt="Machine Learning Icon">
-                        <h4>Predictive Modeling</h4>
-                        <p>Developing and evaluating machine learning models like Linear Regression for forecasting and prediction.</p>
+                        <div class="icon">&#x1F4BB;</div> <h4>Data Engineering Pipelines</h4>
+                        <p>Developing efficient ETL processes and automating data extraction and transformation using Python and SQL.</p>
                     </div>
                     <div class="service-card">
-                        <i class="fas fa-chart-line service-icon"></i>
-                        <h4>Statistical Analysis</h4>
-                        <p>Applying statistical methods to explore datasets, test hypotheses, and extract meaningful conclusions.</p>
+                        <div class="icon">&#x1F4C8;</div> <h4>Visualization & Reporting</h4>
+                        <p>Creating interactive dashboards (Power BI, Tableau) and reports that clearly communicate results to stakeholders.</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
+    
+    <section id="portfolio">
+        <div class="container">
+            <h2>Portfolio: Data Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="project-card-image">
+                        <img src="images/project1.png" alt="Sales Forecasting Model Visualization">
+                    </div>
+                    <div class="project-info">
+                        <h3>Advanced Sales Forecasting</h3>
+                        <p class="project-tags">Python | ARIMA | Time Series Analysis</p>
+                        <p>Developed a time series model to predict future sales with 95% accuracy, aiding in inventory and resource allocation planning.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/wellingtonb3/project1" target="_blank">View Code on GitHub</a>
+                        </div>
+                    </div>
+                </div>
 
-            <section id="projects" class="page-section">
-                <h2>Featured Projects</h2>
+                <div class="project-card">
+                    <div class="project-card-image">
+                        <img src="images/project2.png" alt="Customer Churn Analysis Dashboard">
+                    </div>
+                    <div class="project-info">
+                        <h3>Customer Churn Prediction</h3>
+                        <p class="project-tags">Python | Scikit-learn | Logistic Regression</p>
+                        <p>Used classification algorithms to identify factors leading to customer churn, resulting in targeted retention strategies.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/wellingtonb3/project2" target="_blank">View Code on GitHub</a>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="project-card-item">
-                    <div class="project-header">
-                        <img src="images/trading_icon.png" alt="Trading Icon" class="project-icon">
+                <div class="project-card">
+                    <div class="project-card-image">
+                        <img src="images/project3.png" alt="Bike Sharing Analysis Dashboard">
+                    </div>
+                    <div class="project-info">
+                        <h3>Interactive Bike Share Analysis</h3>
+                        <p class="project-tags">SQL | Tableau | Data Visualization</p>
+                        <p>Analyzed bike-sharing data to find peak usage times and popular routes, presented in an interactive Tableau dashboard.</p>
+                        <div class="project-links">
+                            <a href="https://public.tableau.com/profile/wellington" target="_blank">View Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-image">
+                        <img src="images/project4.png" alt="Marketing Campaign A/B Testing Results">
+                    </div>
+                    <div class="project-info">
+                        <h3>Marketing Campaign A/B Testing</h3>
+                        <p class="project-tags">R | Hypothesis Testing | Statistical Analysis</p>
+                        <p>Conducted A/B tests and statistical analysis to determine the most effective marketing channels, optimizing ROI.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/wellingtonb3/project4" target="_blank">View Code on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-card-image">
+                        <img src="images/project5.png" alt="Financial Market Data Analysis Visualization">
+                    </div>
+                    <div class="project-info">
                         <h3>Trading Data Analysis: Quantifying Market Volatility</h3>
-                    </div>
-                    <p class="project-tools">Python | Time Series Analysis | Financial Data | Statistical Modeling</p>
-                    <p>
-                        A comprehensive analysis of financial market data, focusing on **time-series analysis** to identify volatility, trend patterns, and key risk indicators. This project showcases data cleaning, feature engineering, and statistical modeling to derive actionable insights for potential trading strategies.
-                    </p>
-                    <div class="project-links">
-                        <a href="https://github.com/wellingtonb3/TradingcomDados-FIU/blob/main/Well%20Final%20Project.ipynb" target="_blank" class="btn">View Notebook</a>
-                        <a href="https://nbviewer.org/github/wellingtonb3/TradingcomDados-FIU/blob/main/Well%20Final%20Project.ipynb" target="_blank" class="btn secondary">Live Preview</a>
+                        <p class="project-tags">Python | Time Series Analysis | Financial Data | Statistical Modeling</p>
+                        <p>A comprehensive analysis of financial market data, focusing on **time-series analysis** to identify volatility, trend patterns, and key risk indicators. This project showcases data cleaning, feature engineering, and statistical modeling to derive actionable insights for potential trading strategies.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/wellingtonb3/TradingcomDados-FIU/blob/main/Well%20Final%20Project.ipynb" target="_blank">View Notebook</a>
+                        </div>
                     </div>
                 </div>
+                
+            </div>
+        </div>
+    </section>
 
-                <div class="project-card-item">
-                    <div class="project-header">
-                        <img src="images/viz_icon.png" alt="Visualization Icon" class="project-icon">
-                        <h3>Impactful Data Visualization: Storytelling with Data</h3>
-                    </div>
-                    <p class="project-tools">Python | Matplotlib | Seaborn | Data Cleaning | EDA</p>
-                    <p>
-                        This project emphasizes the art and science of **data storytelling through compelling visualizations**. It covers the entire process from raw data to insightful charts, demonstrating best practices in visual design to effectively communicate complex information and reveal hidden patterns.
-                    </p>
-                    <div class="project-links">
-                        <a href="https://github.com/wellingtonb3/ONE_Data_Visualization/blob/main/Data_Visualization.ipynb" target="_blank" class="btn">View Notebook</a>
-                        <a href="https://nbviewer.org/github/wellingtonb3/ONE_Data_Visualization/blob/main/Data_Visualization.ipynb" target="_blank" class="btn secondary">Live Preview</a>
-                    </div>
-                </div>
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p style="font-size: 1.2em; margin-bottom: 30px;">I'm open to new data challenges, collaborative projects, and career opportunities. Feel free to connect!</p>
+            <div class="social-links">
+                <a href="mailto:wellingtoncarlos@email.com">Email</a> |
+                <a href="https://www.linkedin.com/in/wellingtoncarlos" target="_blank">LinkedIn</a> |
+                <a href="https://github.com/wellingtonb3" target="_blank">GitHub</a>
+            </div>
+            <a href="files/Wellington_Carlos_Resume.pdf" class="cta-button" style="margin-top: 30px;">Download Resume</a>
+        </div>
+    </section>
 
-                <div class="project-card-item">
-                    <div class="project-header">
-                        <img src="images/ml_icon.png" alt="Machine Learning Icon" class="project-icon">
-                        <h3>Predicting Real Estate Prices using Linear Regression</h3>
-                    </div>
-                    <p class="project-tools">Python | Scikit-learn | Linear Regression | Feature Engineering | Model Evaluation</p>
-                    <p>
-                        A practical application of **machine learning for predicting housing prices**. This project details the full lifecycle of a regression task, including data preprocessing, feature engineering, training a Linear Regression model, and rigorous evaluation using metrics like R-squared and Mean Absolute Error.
-                    </p>
-                    <div class="project-links">
-                        <a href="https://github.com/wellingtonb3/ONE_regressao_linear/blob/main/%5BProjeto-Final%5D%20-%20Pre%C3%A7os%20de%20Im%C3%B3veis%20Utilizando%C2%A0Regress%C3%A3o%20Linear.ipynb" target="_blank" class="btn">View Notebook</a>
-                        <a href="https://nbviewer.org/github/wellingtonb3/ONE_regressao_linear/blob/main/%5BProjeto-Final%5D%20-%20Pre%C3%A7os%20de%20Im%C3%B3veis%20Utilizando%C2%A0Regress%C3%A3o%20Linear.ipynb" target="_blank" class="btn secondary">Live Preview</a>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Wellington Carlos. Data Enthusiast Portfolio.</p>
+        </div>
+    </footer>
 
-    <script>
-        // Simple JavaScript for active navigation styling (optional)
-        document.querySelectorAll('.main-nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                document.querySelectorAll('.main-nav a').forEach(link => {
-                    link.classList.remove('active');
-                });
-                this.classList.add('active');
-            });
-        });
-    </script>
 </body>
 </html>
